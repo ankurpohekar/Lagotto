@@ -5,15 +5,15 @@
 // the compiled file.
 //
 // Load bower components
-//= require es5-shim/es5-shim.js
-//= require lodash/lodash.js
-//= require jquery/dist/jquery.js
-//= require jquery-ujs/src/rails.js
-//= require jquery-bootpag/lib/jquery.bootpag.js
-//= require d3/d3.js
-//= require crossfilter/crossfilter.js
-//= require queue-async/queue.js
-//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
+//= require es5-shim.js
+//= require lodash.js
+//= require jquery.js
+//= require rails.js
+//= require jquery.bootpag.js
+//= require d3.js
+//= require crossfilter.js
+//= require queue.js
+//= require bootstrap-sprockets
 //
 // Load common d3 helper functions
 //= require bar_chart

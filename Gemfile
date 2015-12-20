@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 4.2.1'
+ruby '2.2.2'
+gem 'rails', '~> 4.2.5'
 gem 'mysql2', '0.3.18'
 
 gem "dotenv", '~> 1.0.2'
@@ -29,7 +30,6 @@ gem "oj", "~> 2.10.4"
 gem 'safe_yaml', '~> 1.0.4'
 gem 'hashie', '~> 3.3.2'
 gem 'rubyzip',  "~> 1.1", :require => 'zip'
-
 gem "devise", "~> 3.4.1"
 gem "omniauth-persona"
 gem "omniauth-cas", "~> 1.1.0"
@@ -60,6 +60,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem "ember-cli-rails"
 
 gem "zenodo", "~> 0.0.8"
+gem 'bootstrap-sass'
 
 group :development do
   gem 'pry-rails', '~> 0.3.2'

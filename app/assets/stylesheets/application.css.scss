@@ -472,11 +472,12 @@ $bar-color-6: darken($bar-color-1, 10%);
 $bar-color-7: lighten($bar-color-1, 20%);
 
 $fa-font-path: "font-awesome/fonts";
+
 @import "almviz";
 @import "github";
-@import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
-@import "bootstrap-sass/assets/stylesheets/bootstrap";
-@import "font-awesome/scss/font-awesome";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
 @import "swagger-ui";
 
 body { padding-top: 70px; padding-bottom: 20px; }
@@ -485,8 +486,8 @@ body { padding-top: 70px; padding-bottom: 20px; }
 // small span.label { vertical-align: bottom; font-size: 66%; margin-left: 0.5em; }
 .label { font-weight: normal; }
 .label-fatal { background-color: $alizarin; }
-.btn-link { color: $navbar-inverse-link-color; }
-.btn-link:hover, .btn-link:focus, .btn-link:active { color: $navbar-inverse-link-hover-color; text-decoration: none; }
+.btn-link { color: navbar-inverse-link-color; }
+.btn-link:hover, .btn-link:focus, .btn-link:active 
 .configuration-edit { margin-bottom: 1em; }
 a { text-decoration: none; }
 
