@@ -1,3 +1,4 @@
+
 <% if can?(:manage, Publisher) and (controller.action_name == "new" or (controller.action_name == "create" and !@publisher.errors.empty?)) %>
 
   <div class="page-header">

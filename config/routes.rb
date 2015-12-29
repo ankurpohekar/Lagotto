@@ -77,15 +77,15 @@ Lagotto::Application.routes.draw do
       resources :publishers, concerns: [:workable, :eventable]
       resources :relation_types, only: [:index, :show]
       resources :sources, concerns: [:workable, :eventable] do
-        resources :months
+      resources :months
       end
       resources :status, only: [:index]
       resources :work_types, only: [:index, :show]
       resources :works, constraints: { :id => /.+?/, :format=> false } do
-        resources :references
-        resources :versions
-        resources :recommendations
-        resources :events
+      resources :references
+      resources :versions
+      resources :recommendations
+      resources :events
       end
     end
   end

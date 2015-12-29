@@ -86,6 +86,7 @@ GEM
     bullet (4.14.10)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
+    byebug (8.2.1)
     cancancan (1.9.2)
     capistrano (3.4.0)
       i18n
@@ -466,6 +467,7 @@ DEPENDENCIES
   brakeman (~> 2.6.0)
   bugsnag (~> 2.8.6)
   bullet (~> 4.14.0)
+  byebug
   cancancan (~> 1.9.2)
   capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1.2)

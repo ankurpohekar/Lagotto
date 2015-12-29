@@ -61,6 +61,7 @@ gem "ember-cli-rails"
 
 gem "zenodo", "~> 0.0.8"
 gem 'bootstrap-sass'
+gem 'byebug'
 
 group :development do
   gem 'pry-rails', '~> 0.3.2'

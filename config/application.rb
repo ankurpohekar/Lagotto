@@ -65,6 +65,7 @@ module Lagotto
     # dalli uses ENV['MEMCACHE_SERVERS']
     ENV['MEMCACHE_SERVERS'] ||= ENV['HOSTNAME']
     config.cache_store = :dalli_store, nil, { :namespace => ENV['APPLICATION'], :compress => true }
+    #config.cache_store = :dalli_store
 
     # Skip validation of locale
     I18n.enforce_available_locales = false

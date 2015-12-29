@@ -14,7 +14,7 @@ class Source < ActiveRecord::Base
   # include HTTP request helpers
   include Networkable
 
-  # include CouchDB helpers
+# include CouchDB helpers
   include Couchable
 
   # include author methods

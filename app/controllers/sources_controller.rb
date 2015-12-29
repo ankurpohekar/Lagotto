@@ -14,7 +14,6 @@ class SourcesController < ApplicationController
 
   def index
     @doc = Doc.find("sources")
-
     @groups = Group.includes(:sources).order("groups.id, sources.title")
   end
 
