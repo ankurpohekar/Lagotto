@@ -4,9 +4,9 @@ class AddScopusColumn < ActiveRecord::Migration
     add_column :works, :wos, :string
 
     add_index "works", ["scp", "published_on", "id"], name: "index_works_on_scp_published_on_id"
-    add_index "works", ["scp"], name: "index_works_on_scp", unique: true
+    add_index "works", ["scp"], name: "index_works_on_scp", unique: true, length: {"scp" => 100}
     add_index "works", ["wos", "published_on", "id"], name: "index_works_on_wos_published_on_id"
-    add_index "works", ["wos"], name: "index_works_on_wos", unique: true
+    add_index "works", ["wos"], name: "index_works_on_wos", unique: true, length: {"wos" => 100}
   end
 
   def down

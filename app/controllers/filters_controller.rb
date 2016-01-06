@@ -1,6 +1,6 @@
 class FiltersController < ApplicationController
   before_filter :load_filter, only: [:edit, :update]
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   def index
     load_index

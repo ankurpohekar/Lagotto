@@ -15,6 +15,7 @@ class Rss::WorksController < ApplicationController
 
   def load_work
     # Load one work given query params
+    #method call from models/imports/file_import.rb
     id_hash = get_id_hash(params[:id])
     if id_hash.respond_to?("key")
       key, value = id_hash.first

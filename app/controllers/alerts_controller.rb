@@ -1,7 +1,7 @@
 class AlertsController < ApplicationController
   before_filter :load_alert, only: [:destroy]
-  load_and_authorize_resource
-  skip_authorize_resource :only => [:create, :routing_error]
+  # load_and_authorize_resource
+  # skip_authorize_resource :only => [:create, :routing_error]
 
   def index
     @servers = ENV['SERVERS'].split(",")
@@ -33,6 +33,7 @@ class AlertsController < ApplicationController
     collection = collection.query(params[:q]) if params[:q]
 
     @alerts = collection.paginate(:page => params[:page])
+    
   end
 
   def create
@@ -53,6 +54,7 @@ class AlertsController < ApplicationController
     respond_to do |format|
       format.json { render json: { error: @alert.public_message }, status: @alert.status }
       format.html { render :show, status: @alert.status, layout: !request.xhr? }
+      
     end
   end
 

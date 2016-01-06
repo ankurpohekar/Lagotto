@@ -34,6 +34,7 @@ namespace :db do
         # only run if configuration option ENV['IMPORT'],
         # or ENV['MEMBER'] and/or ENV['SAMPLE'] are provided
         exit unless ENV['IMPORT'].present? || ENV['MEMBER'].present? || ENV['SAMPLE'].present?
+        byebug
 
         case ENV['IMPORT'].to_s.downcase
         when "member"

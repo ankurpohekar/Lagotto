@@ -17,6 +17,7 @@ class Api::V3::WorksController < Api::BaseController
     fail ActiveRecord::RecordNotFound, "Article not found." if collection.blank?
 
     @works = collection.decorate(context: { info: params[:info], source_ids: source_ids })
+
   end
 
   def show

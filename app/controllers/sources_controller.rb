@@ -1,7 +1,7 @@
 class SourcesController < ApplicationController
   before_filter :load_source, only: [:show, :edit, :update]
-  load_and_authorize_resource
-  skip_authorize_resource :only => [:show, :index]
+  # load_and_authorize_resource
+  # skip_authorize_resource :only => [:show, :index]
 
   def show
     @doc = Doc.find(@source.name)
@@ -47,7 +47,6 @@ class SourcesController < ApplicationController
 
   def load_source
     @source = Source.where(name: params[:id]).first
-
     # raise error if source wasn't found
     fail ActiveRecord::RecordNotFound, "No record for \"#{params[:id]}\" found" if @source.blank?
   end

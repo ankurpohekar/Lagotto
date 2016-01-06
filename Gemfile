@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.2.3'
 gem 'rails', '~> 4.2.5'
 gem 'mysql2', '0.3.18'
 
@@ -62,6 +62,7 @@ gem "ember-cli-rails"
 gem "zenodo", "~> 0.0.8"
 gem 'bootstrap-sass'
 gem 'byebug'
+gem 'jquery-rails'
 
 group :development do
   gem 'pry-rails', '~> 0.3.2'

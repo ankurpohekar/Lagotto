@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
 
   # include helper module for DOI resolution
   include Resolvable
-
-  protect_from_forgery
+  # protect_from_forgery
 
   before_filter :miniprofiler
 

@@ -11,7 +11,6 @@ class TwitterSearch < Source
     query_string = get_query_string(work)
     return {} unless query_string.present?
     fail ArgumentError, "No access token." unless get_access_token
-
     url % { query_string: query_string }
   end
 
@@ -47,7 +46,7 @@ class TwitterSearch < Source
 
       timestamp = get_iso8601_from_time(item.fetch('created_at', nil))
       url = "http://twitter.com/#{user}/status/#{item.fetch('id_str', '')}"
-
+      byebug
       { "author" => get_authors([user_name]),
         "title" => item.fetch('text', ""),
         "container-title" => "Twitter",
@@ -129,10 +128,12 @@ class TwitterSearch < Source
   end
 
   def events_url
+    #search in twitter
     "https://twitter.com/search?q=%{query_string}&f=realtime"
   end
 
   def authentication_url
+    #use to authenticate by api token 
     "https://api.twitter.com/oauth2/token"
   end
 

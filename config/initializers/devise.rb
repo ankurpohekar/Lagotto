@@ -1,14 +1,17 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+
+
+  config.secret_key = '0b3821d6411f7df66fc97eb636f864777216ced6f3b7c18d47a0ca006e4657fa2af63307c5d1fc26fa44dc59d9e41d22e8546e967f8cc352b2292b4f651b78f0'
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "ankur@doboz.in"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
-
+   
   # Automatically apply schema changes in tableless databases
   # config.apply_schema = false
 
@@ -182,7 +185,7 @@ Devise.setup do |config|
   # Defines name of the authentication token params key
   # config.token_authentication_key = :api_key
 
-  config.secret_key = ENV['SECRET_KEY_BASE']
+  #config.secret_key = ENV['SECRET_KEY_BASE']
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for

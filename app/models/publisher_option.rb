@@ -18,13 +18,11 @@ class PublisherOption < ActiveRecord::Base
   # Custom validations
   def validate_publisher_fields
     publisher_fields.each do |field|
-
       # Some fields can be blank
       next if source.name == "crossref" && field == :password
       next if source.name == "mendeley" && field == :access_token
       next if source.name == "twitter_search" && field == :access_token
       next if source.name == "scopus" && field == :insttoken
-
       errors.add(field, "can't be blank") if send(field).blank?
     end
   end

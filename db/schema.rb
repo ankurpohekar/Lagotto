@@ -78,24 +78,6 @@ ActiveRecord::Schema.define(version: 20150715173747) do
   add_index "api_responses", ["total"], name: "index_api_responses_on_total", using: :btree
   add_index "api_responses", ["unresolved", "id"], name: "index_api_responses_unresolved_id", using: :btree
 
-  create_table "articles", force: :cascade do |t|
-    t.string   "doi",           limit: 191,                  null: false
-    t.text     "title",         limit: 65535
-    t.date     "published_on"
-    t.string   "pmid",          limit: 255
-    t.string   "pmcid",         limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "canonical_url", limit: 255
-    t.string   "mendeley_uuid", limit: 255
-    t.integer  "year",          limit: 4,     default: 1970
-    t.integer  "month",         limit: 4
-    t.integer  "day",           limit: 4
-  end
-
-  add_index "articles", ["doi", "published_on", "id"], name: "index_articles_doi_published_on_article_id", using: :btree
-  add_index "articles", ["doi"], name: "index_articles_on_doi", unique: true, using: :btree
-
   create_table "data_exports", force: :cascade do |t|
     t.string   "url",                   limit: 255
     t.string   "type",                  limit: 255
@@ -132,25 +114,6 @@ ActiveRecord::Schema.define(version: 20150715173747) do
   add_index "days", ["retrieval_status_id", "year", "month", "day"], name: "index_days_on_retrieval_status_id_and_year_and_month_and_day", using: :btree
   add_index "days", ["source_id"], name: "days_source_id_fk", using: :btree
   add_index "days", ["work_id", "source_id", "year", "month"], name: "index_days_on_work_id_and_source_id_and_year_and_month", using: :btree
-
-  create_table "delayed_jobs", force: :cascade do |t|
-    t.integer  "priority",   limit: 4,     default: 0
-    t.integer  "attempts",   limit: 4,     default: 0
-    t.text     "handler",    limit: 65535
-    t.text     "last_error", limit: 65535
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by",  limit: 255
-    t.string   "queue",      limit: 191
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["locked_at", "locked_by", "failed_at"], name: "index_dj_locked_at_locked_by_failed_at", length: {"locked_at"=>nil, "locked_by"=>191, "failed_at"=>nil}, using: :btree
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-  add_index "delayed_jobs", ["queue"], name: "index_dj_queue", using: :btree
-  add_index "delayed_jobs", ["run_at", "locked_at", "locked_by", "failed_at", "priority"], name: "index_dj_run_at_locked_at_locked_by_failed_at_priority", length: {"run_at"=>nil, "locked_at"=>nil, "locked_by"=>191, "failed_at"=>nil, "priority"=>nil}, using: :btree
 
   create_table "file_write_logs", force: :cascade do |t|
     t.string   "filepath",   limit: 255
@@ -267,21 +230,6 @@ ActiveRecord::Schema.define(version: 20150715173747) do
 
   add_index "reports_users", ["report_id", "user_id"], name: "index_reports_users_on_report_id_and_user_id", using: :btree
   add_index "reports_users", ["user_id"], name: "index_reports_users_on_user_id", using: :btree
-
-  create_table "retrieval_histories", force: :cascade do |t|
-    t.integer  "retrieval_status_id", limit: 4,               null: false
-    t.integer  "article_id",          limit: 4,               null: false
-    t.integer  "source_id",           limit: 4,               null: false
-    t.datetime "retrieved_at"
-    t.string   "status",              limit: 255
-    t.string   "msg",                 limit: 255
-    t.integer  "event_count",         limit: 4,   default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "retrieval_histories", ["retrieval_status_id", "retrieved_at"], name: "index_rh_on_id_and_retrieved_at", using: :btree
-  add_index "retrieval_histories", ["source_id", "status", "updated_at"], name: "index_rh_on_source_status_updated", length: {"source_id"=>nil, "status"=>191, "updated_at"=>nil}, using: :btree
 
   create_table "retrieval_statuses", force: :cascade do |t|
     t.integer  "work_id",      limit: 4,                                        null: false
@@ -404,13 +352,6 @@ ActiveRecord::Schema.define(version: 20150715173747) do
     t.string   "container",  limit: 255
   end
 
-  create_table "workers", force: :cascade do |t|
-    t.integer  "identifier", limit: 4,   null: false
-    t.string   "queue",      limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "works", force: :cascade do |t|
     t.string   "doi",                 limit: 191
     t.text     "title",               limit: 65535
@@ -439,9 +380,9 @@ ActiveRecord::Schema.define(version: 20150715173747) do
   end
 
   add_index "works", ["ark", "published_on", "id"], name: "index_works_on_ark_published_on_id", using: :btree
-  add_index "works", ["ark"], name: "index_works_on_ark", unique: true, using: :btree
+  add_index "works", ["ark"], name: "index_works_on_ark", unique: true, length: {"ark"=>100}, using: :btree
   add_index "works", ["arxiv", "published_on", "id"], name: "index_works_on_arxiv_published_on_id", using: :btree
-  add_index "works", ["arxiv"], name: "index_works_on_arxiv", unique: true, using: :btree
+  add_index "works", ["arxiv"], name: "index_works_on_arxiv", unique: true, length: {"arxiv"=>100}, using: :btree
   add_index "works", ["canonical_url", "published_on", "id"], name: "index_works_on_url_published_on_id", length: {"canonical_url"=>100, "published_on"=>nil, "id"=>nil}, using: :btree
   add_index "works", ["canonical_url"], name: "index_works_on_url", length: {"canonical_url"=>100}, using: :btree
   add_index "works", ["created_at"], name: "index_works_on_created_at", using: :btree
@@ -449,19 +390,18 @@ ActiveRecord::Schema.define(version: 20150715173747) do
   add_index "works", ["doi", "published_on", "id"], name: "index_articles_doi_published_on_article_id", using: :btree
   add_index "works", ["doi"], name: "index_works_on_doi", unique: true, using: :btree
   add_index "works", ["pid"], name: "index_works_on_pid", unique: true, length: {"pid"=>191}, using: :btree
-  add_index "works", ["pmcid", "published_on", "id"], name: "index_works_on_pmcid_published_on_id", using: :btree
-  add_index "works", ["pmcid"], name: "index_works_on_pmcid", unique: true, using: :btree
+  add_index "works", ["pmcid"], name: "index_works_on_pmcid", unique: true, length: {"pmcid"=>100}, using: :btree
   add_index "works", ["pmid", "published_on", "id"], name: "index_works_on_pmid_published_on_id", using: :btree
   add_index "works", ["pmid"], name: "index_works_on_pmid", unique: true, using: :btree
   add_index "works", ["published_on"], name: "index_works_on_published_on", using: :btree
   add_index "works", ["publisher_id", "published_on"], name: "index_works_on_publisher_id_and_published_on", using: :btree
   add_index "works", ["registration_agency"], name: "index_works_on_registration_agency", length: {"registration_agency"=>191}, using: :btree
   add_index "works", ["scp", "published_on", "id"], name: "index_works_on_scp_published_on_id", using: :btree
-  add_index "works", ["scp"], name: "index_works_on_scp", unique: true, using: :btree
+  add_index "works", ["scp"], name: "index_works_on_scp", unique: true, length: {"scp"=>100}, using: :btree
   add_index "works", ["tracked", "published_on"], name: "index_works_on_tracked_published_on", using: :btree
   add_index "works", ["work_type_id"], name: "works_work_type_id_fk", using: :btree
   add_index "works", ["wos", "published_on", "id"], name: "index_works_on_wos_published_on_id", using: :btree
-  add_index "works", ["wos"], name: "index_works_on_wos", unique: true, using: :btree
+  add_index "works", ["wos"], name: "index_works_on_wos", unique: true, length: {"wos"=>100}, using: :btree
 
   add_foreign_key "days", "retrieval_statuses", name: "days_retrieval_status_id_fk", on_delete: :cascade
   add_foreign_key "days", "sources", name: "days_source_id_fk", on_delete: :cascade

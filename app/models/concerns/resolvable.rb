@@ -18,7 +18,7 @@ module Resolvable
       if !body_url && body.at('meta[property="og:url"]')
         body_url = body.at('meta[property="og:url"]')['content']
       end
-
+      
       if body_url
         # normalize URL, e.g. remove percent encoding and make URL lowercase
         body_url = PostRank::URI.clean(body_url)

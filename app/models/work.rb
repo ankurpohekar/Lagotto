@@ -167,6 +167,7 @@ class Work < ActiveRecord::Base
   end
 
   def doi_escaped
+    byebug
     CGI.escape(doi) if doi.present?
   end
 

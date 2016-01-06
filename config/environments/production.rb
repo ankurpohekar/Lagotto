@@ -30,8 +30,8 @@ Lagotto::Application.configure do
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
-  # Use a different cache store in production
-  config.cache_store = :dalli_store
+  # Use a different cache store in production 
+  config.cache_store = :dalli_store, 'web1.example.com', 'web2.example.com', 'web3.example.com'
   
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server

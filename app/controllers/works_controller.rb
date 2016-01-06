@@ -1,8 +1,8 @@
 class WorksController < ApplicationController
   before_filter :load_work, only: [:show, :edit, :update, :destroy]
   before_filter :new_work, only: [:create]
-  load_and_authorize_resource
-  skip_authorize_resource :only => [:show, :index]
+  # load_and_authorize_resource
+  # skip_authorize_resource :only => [:show, :index]
 
   def index
     @page = params[:page] || 1
@@ -13,10 +13,9 @@ class WorksController < ApplicationController
     @sort = Source.visible.where(name: params[:sort]).first
     @relation_type = RelationType.where(name: params[:relation_type_id]).first
   end
-
+  
   def show
     format_options = params.slice :events, :source
-
     @groups = Group.order("id")
     @page = params[:page] || 1
     @source = Source.visible.where(name: params[:source_id]).first

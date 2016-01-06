@@ -35,7 +35,7 @@ module Dataoneable
     end
 
     def cron_line
-      config.cron_line || "* 4 * * *"
+      config.cron_line || "* 4 * * *" 
     end
 
     def queue

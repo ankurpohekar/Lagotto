@@ -91,6 +91,7 @@ DATACITE_TYPE_TRANSLATIONS = {
   "Sound" => "song",
   "Text" => "report",
   "Workflow" => nil,
+  "Workflow" => nil,
   "Other" => nil
 }
 

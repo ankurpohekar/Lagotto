@@ -11,16 +11,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # generic handler for all omniauth providers
   def action_missing(provider)
     auth = request.env["omniauth.auth"]
-
     # provider-specific tweaks to standard omniauth hash
     case provider
     when "cas"
       auth.info.name = auth.extra.name
       auth.info.email = auth.extra.email
     end
-
+    
     @user = User.from_omniauth(auth)
-
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication
     else

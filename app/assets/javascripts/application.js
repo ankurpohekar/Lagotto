@@ -3,7 +3,7 @@
 // be included in the compiled file accessible from http://example.com/assets/application.js
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
-//
+//= require jquery
 // Load bower components
 //= require es5-shim.js
 //= require lodash.js
