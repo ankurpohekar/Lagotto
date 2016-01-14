@@ -20,8 +20,8 @@ namespace :db do
 
       # import in batches of 1,000 works
       input.each_slice(1000) do |batch|
-        import = FileImport.new(file: batch, member: member)
-        import.queue_work_import
+        import = FileImport.new(file: batch, member: member)#invoke class import.rb bcoz FileImport < Import
+        import.queue_work_import#call in import.rb
       end
       puts "Started import of #{number} works in the background..."
     end
@@ -34,7 +34,6 @@ namespace :db do
         # only run if configuration option ENV['IMPORT'],
         # or ENV['MEMBER'] and/or ENV['SAMPLE'] are provided
         exit unless ENV['IMPORT'].present? || ENV['MEMBER'].present? || ENV['SAMPLE'].present?
-        byebug
 
         case ENV['IMPORT'].to_s.downcase
         when "member"

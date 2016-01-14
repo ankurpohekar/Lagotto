@@ -75,7 +75,6 @@ class Work < ActiveRecord::Base
   def self.find_or_create(params)
     work = self.create!(params.except(:related_works))
     work.update_relations(params.fetch(:related_works, []))
-    work
   rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotUnique => e
     # update work if work exists
     # raise an error for other RecordInvalid errors such as missing title
@@ -167,7 +166,6 @@ class Work < ActiveRecord::Base
   end
 
   def doi_escaped
-    byebug
     CGI.escape(doi) if doi.present?
   end
 

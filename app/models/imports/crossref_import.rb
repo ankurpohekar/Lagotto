@@ -23,7 +23,7 @@ class CrossrefImport < Import
     result.fetch('message', {}).fetch('total-results', 0)
   end
 
-  def query_url(offset = 0, rows = 1000)
+  def query_url(offset = 0, rows = 10) #before rows = 1000
     url = "http://api.crossref.org/works?"
     mem = member.split(",") if member.present?
 

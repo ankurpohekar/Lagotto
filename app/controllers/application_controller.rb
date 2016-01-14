@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   # include base controller methods
-  include Authenticable
+  #include Authenticable
 
   # include helper module for DOI resolution
   include Resolvable
-  # protect_from_forgery
+   #protect_from_forgery
 
   before_filter :miniprofiler
 

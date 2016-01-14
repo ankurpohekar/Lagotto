@@ -35,11 +35,9 @@ class Import
         offset: offset,
         type: type,
         issn: issn }
-      Rails.logger.info "queue_work_import: #{options.inspect}"
-      ImportJob.perform_later(self.class.to_s, options)
+      Rails.logger.info "queue_work_import: #{options.inspect}" 
     end
   end
-
   def process_data(options)
     result = get_data(options)
     result = parse_data(result)
@@ -68,6 +66,7 @@ class Import
     Array(items).map do |item|
       work = Work.find_or_create(item)
       work ? work.pid : nil
+      byebug
     end
   end
 end

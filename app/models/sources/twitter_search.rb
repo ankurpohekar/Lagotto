@@ -1,4 +1,5 @@
 class TwitterSearch < Source
+  
   def request_options
     { bearer: access_token }
   end
@@ -46,7 +47,6 @@ class TwitterSearch < Source
 
       timestamp = get_iso8601_from_time(item.fetch('created_at', nil))
       url = "http://twitter.com/#{user}/status/#{item.fetch('id_str', '')}"
-      byebug
       { "author" => get_authors([user_name]),
         "title" => item.fetch('text', ""),
         "container-title" => "Twitter",
@@ -165,3 +165,7 @@ class TwitterSearch < Source
     config.queue || "low"
   end
 end
+
+
+#<OpenStruct queue="low", rate_limiting=1800, staleness_week=86400, staleness_month=86400, staleness_year=648000, staleness_all=648000, timeout=30, max_failed_queries=200, tracked="0", api_key="\tbrNBTN48wJyNbUFa2iDyhmWP4", api_secret="BneT0K38tMpRV5X85dtXo0eizl6YONEsXTylCyMBTkRbobIGwG", access_token="778607689-gxXsjUiAEnGylCmtdkEW4eKnjBQHUHBXJpbYMfxF">,
+ #<OpenStruct>,

@@ -1,7 +1,7 @@
 class Facebook < Source
   def get_query_url(work, options = {})
-    fail ArgumentError, "No Facebook access token." unless get_access_token
-    return {} unless work.get_url
+    fail ArgumentError, "No Facebook access token." unless get_access_token #get access token for facebook
+    return {} unless work.get_url #get_url method is present in work.rb line 208
 
     # use depreciated v2.0 API if url_linkstat is used
     if url_linkstat.present?
@@ -26,7 +26,6 @@ class Facebook < Source
       total = result.deep_fetch('data', 0, 'total_count') { 0 }
     else
       total = result.deep_fetch('share', 'share_count') { 0 }
-
     end
 
     # don't trust results if event count is above preset limit
@@ -81,10 +80,12 @@ class Facebook < Source
 
   def authentication_url
     "https://graph.facebook.com/oauth/access_token?client_id=%{client_id}&client_secret=%{client_secret}&grant_type=client_credentials"
+    #"https://graph.facebook.com/oauth/access_token?client_id=195744967440387&client_secret=4d939127c9ca455bc79e36da736cce2d&grant_type=client_credentials"
   end
 
   def url
-    "https://graph.facebook.com/v2.1/?access_token=%{access_token}&id=%{query_url}"
+    "https://graph.facebook.com/v2.5/?access_token=%{access_token}&id=%{query_url}"
+    #"https://graph.facebook.com/v2.5/?access_token=195744967440387|FdM1QGk9YLwXLUBLLWW5WBSmx0c&id=http%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0010440X11001064"
   end
 
   # use depreciated v2.0 API if url_linkstat is used

@@ -76,7 +76,7 @@ class Reddit < Source
   end
 
   def events_url
-    "http://www.reddit.com/search?q=%{query_string}"
+    "http://www.reddit.com/search?q=%{query_string}" #query_string is combination of DOI and canonical url
   end
 
   def job_batch_size

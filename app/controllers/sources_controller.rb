@@ -34,7 +34,6 @@ class SourcesController < ApplicationController
       flash.now[:alert] = "Please configure source #{@source.title}: #{error_messages}"
       @flash = flash
     end
-
     if params[:state_event]
       @groups = Group.includes(:sources).order("groups.id, sources.title")
       render :index

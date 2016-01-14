@@ -23,7 +23,7 @@ namespace :cron do
     Rake::Task["db:api_requests:delete"].reenable
 
     Rake::Task["db:api_responses:delete"].invoke
-    Rake::Task["db:api_respons  es:delete"].reenable
+    Rake::Task["db:api_responses:delete"].reenable
 
     Rake::Task["db:alerts:resolve"].invoke
     Rake::Task["db:alerts:resolve"].reenable

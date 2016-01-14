@@ -79,6 +79,7 @@ class UsersController < ApplicationController
       @user = current_user
       @reports = Report.available(@user.role)
       @doc = Doc.find("api")
+
     else
       fail CanCan::AccessDenied.new("Please sign in first.", :read, User)
     end

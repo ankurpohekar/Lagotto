@@ -65,7 +65,7 @@ https://graph.facebook.com/fql?access_token=%{access_token}&q=select url, share_
 </tr>
 <tr>
 <td valign="top" width=20%><strong>API URL</strong></td>
-<td valign="top" width=80%>https://graph.facebook.com/v2.1/?access_token=%{access_token}&id=DOI_AS_URL</td>
+<td valign="top" width=80%>https://graph.facebook.com/v2.5/?access_token=%{access_token}&id=DOI_AS_URL</td>
 </tr>
 <tr>
 <td valign="top" width=20%><strong>License</strong></td>

@@ -38,12 +38,15 @@ set :output, "log/cron.log"
 # Generate a monthly report
 
 # every hour at 5 min past the hour
-every "5 * * * *" do
+
+every "5 * * * *" do  #{queue:stale, cache:update, sidekiw:update}
   rake "cron:hourly"
+}
 end
 
 every 1.day, at: "1:20 AM" do
   rake "cron:daily"
+}
 end
 
 every "20 11,16 * * *" do

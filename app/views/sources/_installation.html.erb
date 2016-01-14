@@ -16,7 +16,7 @@
         <tbody>
           <% group.sources.each do |source| %>
             <tr>
-              <td><%= link_to_if source.installed?, source.title, source_path(source) %></td>
+              <td><%= link_to_if source.installed?, source.title, source_path(source) %></td><%#call installed method in source model%>
               <td><%= state_label(source.human_state_name).html_safe %></td>
               <td><%= h(source.description) %></td>
               <% if can?(:manage, Alert) %>

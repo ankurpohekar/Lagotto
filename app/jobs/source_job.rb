@@ -30,7 +30,7 @@ class SourceJob < ActiveJob::Base
       source_id: source_id)
   end
 
-  def perform(rs_ids, source)
+  def perform(rs_ids, source) #for example rs_ids = [array of size 200] and source contain facebook
     ActiveRecord::Base.connection_pool.with_connection do
       rs_ids.each do |rs_id|
         # check for failed queries and rate-limiting
